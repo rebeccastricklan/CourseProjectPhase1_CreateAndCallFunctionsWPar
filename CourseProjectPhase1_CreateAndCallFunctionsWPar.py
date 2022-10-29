@@ -5,13 +5,13 @@ def GetEmpName():
     empname = input("Enter employee name: ")
     return enpname
 def GetHoursWorked():
-    hoursworked = input("Enter hours worked: ")
+    hoursworked = float(input("Enter hours worked: "))
     return hoursworked
 def GetHourlyRate():
-    hourlyrate = input("Enter hourly rate: ")
+    hourlyrate = float(input("Enter hourly rate: "))
     return hourlyrate
 def GetTaxRate():
-    taxrate = input("Enter tax rate: ")
+    taxrate = float(input("Enter tax rate: "))
 
 def CalcTaxAndNetPay(hours, hourlyrate, taxrate):
     grosspay = hours * hourlyrate
@@ -24,8 +24,10 @@ def printinfo(empname, hours, hourlyrate, grosspay, taxrate, incometax, netpay):
 def PrintTotals(TotEmployees, TotHours, TotGrossPay, TotTax, TotNetPay):
     print()
     print(f"Total Number Of Employees: {TotEmployees}")
-def printinfo(TotHours, TotGrossPay, TotTax, TotNetPay):
-    print(TotHours, f"{TotHours:,.2f}", f"{TotGrossPay:,.2f}", f"{TotTax:,.2f}", f"{TotNetPay:,.2f}")
+    print(f"Total Hours Worked: {TotHours:,.2f}")
+    print(f"Total Gross Pay: {TotGrossPay:,.2f}")
+    print(f"Total Income Tax: {TotTax:,.2f}")
+    print(f"Total Net Pay: {TotNetPay:,.2f}")
 
 if __name__ == "__main__":
     TotEmploees = 0
@@ -38,14 +40,18 @@ if __name__ == "__main__":
         if (empname.upper() == "END"):
             break
         hours = GetHoursWorked()
-        if (hours.upper() == "END"):
-            break
         hourlyrate = GetHourlyRate()
-        if (hourlyrate.upper() == "END"):
-            break
         taxrate = GetTaxRate()
-        if (taxrate.upper() == "END"):
-            break
+        grosspay, incomtax, netpay = CalTaxAndNetPay(hours, hourlyrate, taxrate)
+        printinfo(empname, hours, hourlyrate, grosspay, taxrate, incometax, netpay)
+        TotEmployees += 1
+        TotHours += hours
+        TotGrossPay += grosspay
+        TotTax += incometax
+        TotNetPay += netpay
+PrintTotals (TotEmployees, TotHours, TotGrossPay, TotTax, TotNetPay)
+        
+           
 
 
 
