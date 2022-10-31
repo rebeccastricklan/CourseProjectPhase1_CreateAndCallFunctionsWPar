@@ -3,7 +3,7 @@
 #CIS261
 def GetEmpName():
     empname = input("Enter employee name: ")
-    return enpname
+    return empname
 def GetHoursWorked():
     hoursworked = float(input("Enter hours worked: "))
     return hoursworked
